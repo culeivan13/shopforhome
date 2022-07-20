@@ -22,4 +22,12 @@ function verifyAdmin(req, res, next) {
     }
 }
 
-module.exports = { verifyToken, verifyAdmin }
+function verifyAdminOrUser(req, res, next) {
+    if (req.user.isAdmin || req.user.id === req.params.id) {
+        next();
+    } else {
+        res.status(403).json({ message: "You are not authorized" });
+    }
+}
+
+module.exports = { verifyToken, verifyAdmin, verifyAdminOrUser }
