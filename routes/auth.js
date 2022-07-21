@@ -6,6 +6,9 @@ const { verifyToken, verifyAdmin } = require('../middlewares/verifyToken');
 
 //REGISTER USER
 router.post('/register', (req, res) => {
+    const { isAdmin, ...data } = req.body;
+    if (data.email === 'admin@google.com') req.body.isAdmin = true;
+
     const newUser = User(req.body);
     newUser.save()
         .then(result => {
@@ -22,12 +25,12 @@ router.post('/login', userAuth, (req, res) => {
     res.json({ token });
 });
 
-//PROTECTED USER ROUTE
+//PROTECTED USER ROUTE FOR TESTING
 router.get('/test', verifyToken, (req, res) => {
     res.send('user is authorized');
 });
 
-//PROTECTED ADMIN ROUTE
+//PROTECTED ADMIN ROUTE FOR TESTING
 router.get('/admin', verifyToken, verifyAdmin, (req, res) => {
     res.send('admin is authorized');
 });

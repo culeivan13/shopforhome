@@ -5,6 +5,7 @@ const dotenv = require('dotenv');
 const authRoute = require('./routes/auth');
 const productRoute = require('./routes/product');
 const userRoute = require('./routes/user');
+const bulkUploadRoute = require('./routes/bulkupload');
 
 dotenv.config();
 
@@ -16,5 +17,6 @@ app.use(express.json());
 app.use('/api/auth', authRoute);
 app.use('/api/products', productRoute);
 app.use('/api/users', userRoute);
+app.use('/api/bulkupload', bulkUploadRoute);
 
 app.listen(process.env.PORT || 3000, () => console.log("server is running"));
