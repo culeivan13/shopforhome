@@ -21,4 +21,4 @@ app.use('/api/products', productRoute);
 app.use('/api/users', userRoute);
 app.use('/api/bulkupload', bulkUploadRoute);
 
-app.listen(process.env.PORT || 5000, () => console.log("server is running"));
+app.listen(process.env.PORT || 8080, () => console.log("server is running"));
