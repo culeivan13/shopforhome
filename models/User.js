@@ -30,7 +30,11 @@ const userSchema = new mongoose.Schema({
     isAdmin: {
         type: Boolean,
         default: false
-    }
+    },
+    discount: {
+        type: Number,
+        default: 0
+    },
 });
 
 //HASHING PASSWORD 
